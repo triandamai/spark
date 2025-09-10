@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="kmp-js-wizard-js-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="kmp-js-wizard-js-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="kmp-js-wizard.jsMain" />
+    </root>
+  </artifact>
+</component>
