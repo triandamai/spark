@@ -1,0 +1,386 @@
+Initialized native services in: /Users/triandamai/.gradle/native
+Initialized jansi services in: /Users/triandamai/.gradle/native
+The client will now receive all logging from the daemon (pid: 72507). The daemon log file: /Users/triandamai/.gradle/daemon/9.0.0/daemon-72507.out.log
+Starting 56th build in daemon [uptime: 1 hrs 30 mins 50.415 secs, performance: 100%, GC rate: 0.00/s, heap usage: 6% of 512 MiB, non-heap usage: 39% of 384 MiB]
+Using 10 worker leases.
+Invalidating in-memory cache of /Users/triandamai/Projects/kotlin-web-framework/.gradle/9.0.0/fileHashes/fileHashes.bin
+Invalidating in-memory cache of /Users/triandamai/Projects/kotlin-web-framework/.gradle/buildOutputCleanup/outputFiles.bin
+Invalidating in-memory cache of /Users/triandamai/Projects/kotlin-web-framework/.gradle/9.0.0/fileHashes/resourceHashesCache.bin
+Now considering [/Users/triandamai/Projects/kotlin-web-framework] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Invalidating in-memory cache of /Users/triandamai/.gradle/caches/9.0.0/fileHashes/kotlinDslCompileAvoidanceClasspathHashCache.bin
+Invalidating in-memory cache of /Users/triandamai/.gradle/caches/9.0.0/fileHashes/fileHashes.bin
+Invalidating in-memory cache of /Users/triandamai/.gradle/caches/9.0.0/fileHashes/resourceHashesCache.bin
+Invalidating in-memory cache of /Users/triandamai/.gradle/caches/journal-1/file-access.bin
+Settings evaluated using settings file '/Users/triandamai/Projects/kotlin-web-framework/settings.gradle.kts'.
+Projects loaded. Root project using build file '/Users/triandamai/Projects/kotlin-web-framework/build.gradle.kts'.
+Included projects: [root project 'kmp-js-wizard']
+
+> Configure project :
+Evaluating root project 'kmp-js-wizard' using build file '/Users/triandamai/Projects/kotlin-web-framework/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.20']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.20']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.js-plain-objects', version: '2.2.20']
+Build 97bb2f23-facc-4674-a70d-dce43064a43f is started
+Using Kotlin Gradle Plugin gradle813 variant
+[KOTLIN] Storing cached files in /Users/triandamai/.gradle
+[KOTLIN] Storing cached files in /Users/triandamai/.gradle
+[KOTLIN] Storing cached files in /Users/triandamai/.gradle
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'jsBrowserTest'
+Selected primary task 'clean' from project :
+Selected primary task 'jsBrowserTest' from project :
+Starting process 'command 'uname''. Working directory: /Users/triandamai/Projects/kotlin-web-framework Command: uname -m
+Successfully started process 'command 'uname''
+Tasks to be executed: [task ':cleanJsBrowserTest', task ':cleanAllTests', task ':clean', task ':kmpPartiallyResolvedDependenciesChecker', task ':checkKotlinGradlePluginConfigurationErrors', task ':compileKotlinJs', task ':jsProcessResources', task ':jsMainClasses', task ':compileTestKotlinJs', task ':jsTestProcessResources', task ':jsTestClasses', task ':compileTestDevelopmentExecutableKotlinJs', task ':jsTestTestDevelopmentExecutableCompileSync', task ':kotlinNodeJsSetup', task ':kotlinKotlinNpmCachesSetup', task ':kotlinRestoreYarnLock', task ':kotlinYarnSetup', task ':jsPackageJson', task ':jsTestPackageJson', task ':jsPublicPackageJson', task ':jsTestPublicPackageJson', task ':kotlinPackageJsonUmbrella', task ':rootPackageJson', task ':kotlinNpmInstall', task ':kotlinStoreYarnLock', task ':jsBrowserTest']
+Tasks that were excluded: []
+Resolve mutations for :cleanJsBrowserTest (Thread[Execution worker,5,main]) started.
+:cleanJsBrowserTest (Thread[Execution worker,5,main]) started.
+Invalidating in-memory cache of /Users/triandamai/Projects/kotlin-web-framework/.gradle/9.0.0/executionHistory/executionHistory.bin
+
+> Task :cleanJsBrowserTest
+Caching disabled for task ':cleanJsBrowserTest' because:
+  Build cache is disabled
+Task ':cleanJsBrowserTest' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanAllTests (Thread[Execution worker,5,main]) started.
+:cleanAllTests (Thread[Execution worker,5,main]) started.
+
+> Task :cleanAllTests
+Skipping task ':cleanAllTests' as it has no actions.
+Resolve mutations for :clean (Thread[Execution worker,5,main]) started.
+:clean (Thread[Execution worker,5,main]) started.
+destroyer locations for task group 0 (Thread[Execution worker Thread 9,5,main]) started.
+Detected overflow for /Users/triandamai/Projects/kotlin-web-framework
+Overflow detected (type: OPERATING_SYSTEM) for watched path '/Users/triandamai/Projects/kotlin-web-framework', invalidating
+Not watching anything anymore
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Build cache is disabled
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kmpPartiallyResolvedDependenciesChecker (Thread[Execution worker,5,main]) started.
+:kmpPartiallyResolvedDependenciesChecker (Thread[Execution worker,5,main]) started.
+
+> Task :kmpPartiallyResolvedDependenciesChecker
+Caching disabled for task ':kmpPartiallyResolvedDependenciesChecker' because:
+  Build cache is disabled
+Task ':kmpPartiallyResolvedDependenciesChecker' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Execution stopped by some action with message: null
+Resolve mutations for :checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :compileKotlinJs (Thread[Execution worker,5,main]) started.
+:compileKotlinJs (Thread[Execution worker,5,main]) started.
+Resolve mutations for :jsProcessResources (Thread[Execution worker Thread 5,5,main]) started.
+:jsProcessResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsProcessResources
+Caching disabled for task ':jsProcessResources' because:
+  Build cache is disabled
+  Not worth caching
+Task ':jsProcessResources' is not up-to-date because:
+  Output property 'destinationDir' file /Users/triandamai/Projects/kotlin-web-framework/build/processedResources/js/main has been removed.
+  Output property 'destinationDir' file /Users/triandamai/Projects/kotlin-web-framework/build/processedResources/js/main/index.html has been removed.
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webMain/resources', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonMain/resources', not found
+Resolve mutations for :jsTestProcessResources (Thread[Execution worker Thread 5,5,main]) started.
+:jsTestProcessResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsTestProcessResources NO-SOURCE
+Skipping task ':jsTestProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :kotlinNodeJsSetup (Thread[Execution worker Thread 5,5,main]) started.
+:kotlinNodeJsSetup (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :kotlinNodeJsSetup UP-TO-DATE
+Caching disabled for task ':kotlinNodeJsSetup' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':kotlinNodeJsSetup' as it is up-to-date.
+Resolve mutations for :kotlinKotlinNpmCachesSetup (Thread[Execution worker Thread 5,5,main]) started.
+:kotlinKotlinNpmCachesSetup (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :kotlinKotlinNpmCachesSetup
+Caching disabled for task ':kotlinKotlinNpmCachesSetup' because:
+  Build cache is disabled
+Task ':kotlinKotlinNpmCachesSetup' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kotlinRestoreYarnLock (Thread[Execution worker Thread 5,5,main]) started.
+:kotlinRestoreYarnLock (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :kotlinRestoreYarnLock
+Caching disabled for task ':kotlinRestoreYarnLock' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':kotlinRestoreYarnLock' is not up-to-date because:
+  Output property 'outputFile' file /Users/triandamai/Projects/kotlin-web-framework/build/js/yarn.lock has been removed.
+Resolve mutations for :kotlinYarnSetup (Thread[Execution worker Thread 5,5,main]) started.
+:kotlinYarnSetup (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :kotlinYarnSetup UP-TO-DATE
+Caching disabled for task ':kotlinYarnSetup' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':kotlinYarnSetup' as it is up-to-date.
+Resolve mutations for :jsPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+:jsPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsPackageJson
+Caching disabled for task ':jsPackageJson' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':jsPackageJson' is not up-to-date because:
+  Output property 'packageJson' file /Users/triandamai/Projects/kotlin-web-framework/build/js/packages/kmp-js-wizard/package.json has been removed.
+Resolve mutations for :jsTestPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+:jsTestPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsTestPackageJson
+Caching disabled for task ':jsTestPackageJson' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':jsTestPackageJson' is not up-to-date because:
+  Output property 'packageJson' file /Users/triandamai/Projects/kotlin-web-framework/build/js/packages/kmp-js-wizard-test/package.json has been removed.
+Resolve mutations for :jsPublicPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+:jsPublicPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsPublicPackageJson
+Caching disabled for task ':jsPublicPackageJson' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':jsPublicPackageJson' is not up-to-date because:
+  Output property 'packageJsonFile' file /Users/triandamai/Projects/kotlin-web-framework/build/tmp/jsPublicPackageJson/package.json has been removed.
+Resolve mutations for :jsTestPublicPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+:jsTestPublicPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsTestPublicPackageJson
+Caching disabled for task ':jsTestPublicPackageJson' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':jsTestPublicPackageJson' is not up-to-date because:
+  Output property 'packageJsonFile' file /Users/triandamai/Projects/kotlin-web-framework/build/tmp/jsTestPublicPackageJson/package.json has been removed.
+Resolve mutations for :kotlinPackageJsonUmbrella (Thread[Execution worker Thread 5,5,main]) started.
+:kotlinPackageJsonUmbrella (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :kotlinPackageJsonUmbrella
+Skipping task ':kotlinPackageJsonUmbrella' as it has no actions.
+Resolve mutations for :rootPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+:rootPackageJson (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :rootPackageJson
+Caching disabled for task ':rootPackageJson' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':rootPackageJson' is not up-to-date because:
+  Output property 'rootPackageJsonFile' file /Users/triandamai/Projects/kotlin-web-framework/build/js/package.json has been removed.
+Resolve mutations for :kotlinNpmInstall (Thread[Execution worker Thread 5,5,main]) started.
+:kotlinNpmInstall (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :compileKotlinJs
+Caching disabled for task ':compileKotlinJs' because:
+  Build cache is disabled
+Task ':compileKotlinJs' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/main has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/main/default has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/main/default/ir has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileKotlinJs'.
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webMain/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonMain/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webMain/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonMain/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webMain/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonMain/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webMain/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonMain/kotlin', not found
+Using Kotlin/JS incremental compilation
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JS, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Unknown@332a09c, classpathChanges=NotAvailableForJSCompiler, workingDir=/Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileKotlinJs/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileKotlinJs/local-state/build-history.bin, useModuleDetection=false), icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=false, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[/Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/main, /Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileKotlinJs/cacheable, /Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileKotlinJs/local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Detected overflow for /Users/triandamai/Projects/kotlin-web-framework
+Overflow detected (type: OPERATING_SYSTEM) for watched path '/Users/triandamai/Projects/kotlin-web-framework', invalidating
+Not watching anything anymore
+
+> Task :kotlinNpmInstall
+Caching disabled for task ':kotlinNpmInstall' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':kotlinNpmInstall' is not up-to-date because:
+  Task.upToDateWhen is false.
+Starting process 'command '/Users/triandamai/.gradle/nodejs/node-v22.0.0-darwin-arm64/bin/node''. Working directory: /Users/triandamai/Projects/kotlin-web-framework/build/js Command: /Users/triandamai/.gradle/nodejs/node-v22.0.0-darwin-arm64/bin/node /Users/triandamai/.gradle/yarn/yarn-v1.22.17/bin/yarn.js --ignore-scripts --network-concurrency 1 --mutex network
+Successfully started process 'command '/Users/triandamai/.gradle/nodejs/node-v22.0.0-darwin-arm64/bin/node''
+warning Ignored scripts due to flag.
+Resolve mutations for :jsMainClasses (Thread[Execution worker Thread 5,5,main]) started.
+:jsMainClasses (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsMainClasses
+Skipping task ':jsMainClasses' as it has no actions.
+Resolve mutations for :compileTestKotlinJs (Thread[Execution worker Thread 5,5,main]) started.
+:compileTestKotlinJs (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :kotlinStoreYarnLock (Thread[Execution worker,5,main]) started.
+:kotlinStoreYarnLock (Thread[Execution worker,5,main]) started.
+
+> Task :kotlinStoreYarnLock UP-TO-DATE
+Caching disabled for task ':kotlinStoreYarnLock' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':kotlinStoreYarnLock' as it is up-to-date.
+
+> Task :compileTestKotlinJs
+Caching disabled for task ':compileTestKotlinJs' because:
+  Build cache is disabled
+Task ':compileTestKotlinJs' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/test has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/test/default has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/test/default/ir has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileTestKotlinJs'.
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webTest/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonTest/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webTest/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonTest/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webTest/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonTest/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/webTest/kotlin', not found
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/src/commonTest/kotlin', not found
+Using Kotlin/JS incremental compilation
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JS, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Unknown@332a09c, classpathChanges=NotAvailableForJSCompiler, workingDir=/Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileTestKotlinJs/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileTestKotlinJs/local-state/build-history.bin, useModuleDetection=false), icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=false, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[/Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/test, /Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileTestKotlinJs/cacheable, /Users/triandamai/Projects/kotlin-web-framework/build/kotlin/compileTestKotlinJs/local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Resolve mutations for :jsTestClasses (Thread[Execution worker Thread 5,5,main]) started.
+:jsTestClasses (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsTestClasses
+Skipping task ':jsTestClasses' as it has no actions.
+Resolve mutations for :compileTestDevelopmentExecutableKotlinJs (Thread[Execution worker Thread 5,5,main]) started.
+:compileTestDevelopmentExecutableKotlinJs (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :compileTestDevelopmentExecutableKotlinJs
+Caching disabled for task ':compileTestDevelopmentExecutableKotlinJs' because:
+  Build cache is disabled
+Task ':compileTestDevelopmentExecutableKotlinJs' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/compileSync/js/test/testDevelopmentExecutable/kotlin has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/compileSync/js/test/testDevelopmentExecutable/kotlin/kmp-js-wizard-test.mjs has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/compileSync/js/test/testDevelopmentExecutable/kotlin/kmp-js-wizard-test.mjs.map has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileTestDevelopmentExecutableKotlinJs'.
+i: Produce executable: /Users/triandamai/Projects/kotlin-web-framework/build/compileSync/js/test/testDevelopmentExecutable/kotlin
+i: Cache directory: /Users/triandamai/Projects/kotlin-web-framework/build/klib/cache/js/testDevelopmentExecutable
+i: 
+i: Building cache:
+i: to: /Users/triandamai/Projects/kotlin-web-framework/build/compileSync/js/test/testDevelopmentExecutable/kotlin
+i: cache directory: /Users/triandamai/Projects/kotlin-web-framework/build/klib/cache/js/testDevelopmentExecutable
+i: [/Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/main, /Users/triandamai/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-js/1.8.0/8a2d869e76ce981aada9ac85caef17c2ed3b5e02/kotlinx-serialization-json-js-1.8.0.klib, /Users/triandamai/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-browser-js/0.5.0/a4fafe363554c7fb812df4eecc959a8d7c1b12eb/kotlinx-browser-js-0.5.0.klib, /Users/triandamai/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-js/1.8.0/ae6df61da8e0a1f5d77b39d4f0efa6fb24779564/kotlinx-serialization-core-js-1.8.0.klib, /Users/triandamai/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-dom-api-compat/2.2.20/d5fcf173c169e1998e9e1a9634fd0b7efba09ee9/kotlin-dom-api-compat-2.2.20.klib, /Users/triandamai/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-js/2.2.20/aeb11ca48ea4c71d1b9b7c3eaea0ad7a97fe2cd7/kotlin-test-js-2.2.20.klib, /Users/triandamai/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-js-plain-objects/2.2.20/87c5360242470ce089de044b966d2105cc3c539a/kotlin-js-plain-objects-2.2.20.klib, /Users/triandamai/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-js/2.2.20/8b0c9d5ad84cb9ac543a8b0f9c397caeac6d2aea/kotlin-stdlib-js-2.2.20.klib, /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/test, /Users/triandamai/Projects/kotlin-web-framework/build/classes/kotlin/js/test]
+i: IC rebuilt overall time: 1459ms
+i:   Loading klib dependencies: 0ms
+i:   Modified files - checking hashes and collecting: 6ms
+i:   Modified files - collecting exported signatures: 0ms
+i:   Modified files - loading and linking IR: 335ms
+i:   Dependencies (0) - updating a dependency graph: 65ms
+i:   Dependencies (0) - collecting files with updated exports and imports: 1ms
+i:   Dependencies (0) - collecting exported signatures for files with updated exports and imports: 2ms
+i:   Dependencies (0) - collecting files that contain updated stubbed symbols: 0ms
+i:   Processing IR - initializing backend context: 25ms
+i:   Processing IR - updating intrinsics and builtins dependencies: 12ms
+i:   Incremental cache - building artifacts: 13ms
+i:   Processing IR - lowering: 650ms
+i:   Processing IR - generating program fragments: 195ms
+i:   Incremental cache - committing artifacts: 146ms
+i: 1) module [test] was built clean
+i: 2) module [kotlin-js-plain-objects-2.2.20.klib] was built clean
+i: 3) module [kotlinx-serialization-core-js-1.8.0.klib] was built clean
+i: 4) module [kotlinx-serialization-json-js-1.8.0.klib] was built clean
+i: 5) module [kotlinx-browser-js-0.5.0.klib] was built clean
+i: 6) module [kotlin-stdlib-js-2.2.20.klib] was built clean
+i: 7) module [kotlin-dom-api-compat-2.2.20.klib] was built clean
+i: 8) module [main] was built clean
+i: 9) module [kotlin-test-js-2.2.20.klib] was built clean
+i: Executable production duration (IC): 97ms
+i:   JS code cache loading: 1ms
+i:   Cross module references resolving: 0ms
+i:   Loading JS IR modules with updated cross module references: 2ms
+i:   Initializing JS imports: 1ms
+i:   Generating JS code: 82ms
+i:   Committing compiled JS code: 3ms
+i: IC module builder rebuilt JS for module [me.user:kmp-js-wizard_test]
+i: IC module builder rebuilt JS for module [kotlin-kotlin-stdlib]
+i: IC module builder rebuilt JS for module [kotlinx-browser]
+i: IC module builder rebuilt JS for module [kmp-js-wizard]
+i: IC module builder rebuilt JS for module [kotlinx-serialization-kotlinx-serialization-core]
+i: IC module builder rebuilt JS for module [kotlinx-serialization-kotlinx-serialization-json]
+i: IC module builder rebuilt JS for module [kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat]
+i: IC module builder rebuilt JS for module [kotlin-kotlin-test]
+i: IC module builder rebuilt JS for module [kotlin-plugins-js-plain-objects-runtime]
+Finished executing kotlin compiler using DAEMON strategy
+Resolve mutations for :jsTestTestDevelopmentExecutableCompileSync (Thread[Execution worker Thread 5,5,main]) started.
+:jsTestTestDevelopmentExecutableCompileSync (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :jsTestTestDevelopmentExecutableCompileSync
+Caching disabled for task ':jsTestTestDevelopmentExecutableCompileSync' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':jsTestTestDevelopmentExecutableCompileSync' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/js/packages/kmp-js-wizard-test/kotlin has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/js/packages/kmp-js-wizard-test/kotlin/index.html has been removed.
+  Output property 'destinationDirectory' file /Users/triandamai/Projects/kotlin-web-framework/build/js/packages/kmp-js-wizard-test/kotlin/kmp-js-wizard-test.mjs has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':jsTestTestDevelopmentExecutableCompileSync'.
+file or directory '/Users/triandamai/Projects/kotlin-web-framework/build/processedResources/js/test', not found
+Resolve mutations for :jsBrowserTest (Thread[Execution worker Thread 5,5,main]) started.
+:jsBrowserTest (Thread[Execution worker Thread 5,5,main]) started.
+[ExecAsyncHandle :jsBrowserTest] started
+Starting process 'command '/Users/triandamai/.gradle/nodejs/node-v22.0.0-darwin-arm64/bin/node''. Working directory: /Users/triandamai/Projects/kotlin-web-framework/build/js/packages/kmp-js-wizard-test Command: /Users/triandamai/.gradle/nodejs/node-v22.0.0-darwin-arm64/bin/node /Users/triandamai/Projects/kotlin-web-framework/build/js/node_modules/karma/bin/karma start /Users/triandamai/Projects/kotlin-web-framework/build/js/packages/kmp-js-wizard-test/karma.conf.js
+Successfully started process 'command '/Users/triandamai/.gradle/nodejs/node-v22.0.0-darwin-arm64/bin/node''
+
+Karma v6.4.4 server started at http://localhost:9876/
+Launching browsers ChromeHeadless with concurrency unlimited
+Starting browser ChromeHeadless
+
+> Task :jsBrowserTest
+Caching disabled for task ':jsBrowserTest' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':jsBrowserTest' is not up-to-date because:
+  Task has failed previously.
+
+Connected on socket 8FVfGSplr3swfiPOAAAB with id 95775876
+
+BrowserTest.testInputAndBinding[js, browser, ChromeHeadless144.0.0.0, MacOS10.15.7] STANDARD_OUT
+    [log] [DEBUG_LOG] inputAfter.value: new value
+
+BrowserTest.testInputAndBinding[js, browser, ChromeHeadless144.0.0.0, MacOS10.15.7] FAILED
+    AssertionError: Input value should update when state changes. Expected <programmatic>, actual <new value>.
+        at push../kotlin/kotlin-kotlin-test.mjs.assertTrue_rpw5fg(/var/folders/_s/3xkp2hwx5q9dn05627t5ck_80000gn/T/_karma_webpack_716381/commons.js:22753)
+        at DefaultJsAsserter.assertEquals(/var/folders/_s/3xkp2hwx5q9dn05627t5ck_80000gn/T/_karma_webpack_716381/commons.js:22532)
+        at push../kotlin/kotlin-kotlin-test.mjs.assertEquals_ldumo(/var/folders/_s/3xkp2hwx5q9dn05627t5ck_80000gn/T/_karma_webpack_716381/commons.js:22722)
+        at <global>.assertEquals(/var/folders/_s/3xkp2hwx5q9dn05627t5ck_80000gn/T/_karma_webpack_716381/commons.js:22612)
+        at push../kotlin/kmp-js-wizard-test.mjs.testInputAndBinding_6hcv2u(/var/folders/_s/3xkp2hwx5q9dn05627t5ck_80000gn/T/_karma_webpack_716381/commons.js:766)
+        at <global>.<unknown>(/var/folders/_s/3xkp2hwx5q9dn05627t5ck_80000gn/T/_karma_webpack_716381/commons.js:904)
+        at Context.<anonymous>(/var/folders/_s/3xkp2hwx5q9dn05627t5ck_80000gn/T/_karma_webpack_716381/commons.js:57)
+[ExecAsyncHandle :jsBrowserTest] finished {exitValue=0, failure=null}
+
+> Task :jsBrowserTest FAILED
+
+1 test completed, 1 failed
+Finished generating test XML results (0.0 secs) into: /Users/triandamai/Projects/kotlin-web-framework/build/test-results/jsBrowserTest
+Generating HTML test report...
+Finished generating test html results (0.003 secs) into: /Users/triandamai/Projects/kotlin-web-framework/build/reports/tests/jsBrowserTest
+w: Detected multiple Kotlin daemon sessions at 
+Build 97bb2f23-facc-4674-a70d-dce43064a43f is closed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':jsBrowserTest'.
+> There were failing tests. See the report at: file:///Users/triandamai/Projects/kotlin-web-framework/build/reports/tests/jsBrowserTest/index.html
+
+* Try:
+> Run with --scan to generate a Build Scan (Powered by Develocity).
+
+BUILD FAILED in 9s
+20 actionable tasks: 17 executed, 3 up-to-date
+Watched directory hierarchies: [/Users/triandamai/Projects/kotlin-web-framework]
