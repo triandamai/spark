@@ -7,6 +7,39 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/pretty-print-json@3.0/dist/css/pretty-print-json.css>
 </head>
+<script>
+  window.onerror = function (msg, url, lineNo, columnNo, error) {
+    var message = [
+      'Message: ' + msg,
+      'URL: ' + url,
+      'Line: ' + lineNo,
+      'Column: ' + columnNo,
+      'Error object: ' + JSON.stringify(error)
+    ].join(' - ');
+
+    var div = document.createElement('div');
+    div.style.color = 'red';
+    div.style.padding = '20px';
+    div.style.border = '1px solid red';
+    div.style.margin = '20px';
+    div.style.fontFamily = 'monospace';
+    div.innerText = message;
+    document.body.appendChild(div);
+
+    return false;
+  };
+
+  window.addEventListener('unhandledrejection', function (event) {
+    var div = document.createElement('div');
+    div.style.color = 'red';
+    div.style.padding = '20px';
+    div.style.border = '1px solid red';
+    div.style.margin = '20px';
+    div.style.fontFamily = 'monospace';
+    div.innerText = 'Unhandled Rejection: ' + event.reason;
+    document.body.appendChild(div);
+  });
+</script>
 
 <body>
   <div id="app">
