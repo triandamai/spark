@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
@@ -11,18 +12,26 @@ version = "1.0-SNAPSHOT"
 
 kotlin {
     js(IR) {
+
         generateTypeScriptDefinitions()
         browser {
-            runTask {
-                
+            commonWebpackConfig {
+                outputFileName = "spark.js"
+            }
+            webpackTask {
+                output.libraryTarget = "es2015"
             }
         }
+
         useEsModules()
         binaries.executable()
 
         compilerOptions {
             optIn.add("kotlin.js.ExperimentalJsExport")
+            moduleKind = JsModuleKind.MODULE_ES
+            freeCompilerArgs.add("-Xes-long-as-bigint")
         }
+        outputModuleName="spark"
     }
 
     sourceSets {
