@@ -19,7 +19,7 @@ kotlin {
                 outputFileName = "spark.js"
             }
             webpackTask {
-                output.libraryTarget = "es2015"
+//                output.libraryTarget = "es2015"
             }
         }
 
