@@ -4,6 +4,8 @@ import dom.BuildContext
 import dom.Component
 import dom.View
 import dom.types.DomEvent
+import example.component.CodePreview
+import example.store.SourceCodes
 import kotlinx.browser.window
 
 class Bounced : Component() {
@@ -11,15 +13,16 @@ class Bounced : Component() {
     private val y = state(100.0)
     private val vx = state(3.0)
     private val vy = state(0.0)
-    
+
+    private val preview = CodePreview(SourceCodes.bounced)
     private val gravity = 0.5
     private val bounce = -0.8
     private val friction = 0.99
-    
+
     private val boxSize = 64.0
     private val containerHeight = 400.0
     private val containerWidth = 600.0
-    
+
     private var animationHandle: Int? = null
 
     override fun onMounted() {
@@ -36,10 +39,10 @@ class Bounced : Component() {
         fun step(timestamp: Double) {
             // Update physics
             vy.value += gravity
-            
+
             var nextX = x.value + vx.value
             var nextY = y.value + vy.value
-            
+
             // Wall collisions (X)
             if (nextX <= 0) {
                 nextX = 0.0
@@ -48,7 +51,7 @@ class Bounced : Component() {
                 nextX = containerWidth - boxSize
                 vx.value *= bounce
             }
-            
+
             // Floor/Ceiling collisions (Y)
             if (nextY <= 0) {
                 nextY = 0.0
@@ -59,10 +62,10 @@ class Bounced : Component() {
                 // Add friction when hitting floor
                 vx.value *= friction
             }
-            
+
             x.value = nextX
             y.value = nextY
-            
+
             animationHandle = window.requestAnimationFrame { step(it) }
         }
         animationHandle = window.requestAnimationFrame { step(it) }
@@ -72,10 +75,10 @@ class Bounced : Component() {
         return content {
             div {
                 className("min-h-screen bg-slate-50 p-8 font-sans")
-                
+
                 div {
                     className("max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8")
-                    
+
                     div {
                         className("flex justify-between items-center mb-6")
                         div {
@@ -105,7 +108,7 @@ class Bounced : Component() {
                         style("height", "${containerHeight}px")
                         style("width", "${containerWidth}px")
                         className("mx-auto")
-                        
+
                         // The "Ball"
                         div {
                             className("absolute bg-orange-500 rounded-full shadow-lg flex items-center justify-center border-4 border-orange-600")
@@ -114,9 +117,10 @@ class Bounced : Component() {
                             style("left", "30%")
                             style("top", "0px")
                             style("transform", "translate(${x.value}px, ${y.value}px)")
-                            
+
                             // Basketball lines (simple SVG)
-                            rawHtml("""
+                            rawHtml(
+                                """
                                 <svg viewBox="0 0 100 100" class="w-full h-full p-1 opacity-40">
                                     <circle cx="50" cy="50" r="48" fill="none" stroke="black" stroke-width="2"/>
                                     <path d="M50 2 L50 98" fill="none" stroke="black" stroke-width="2"/>
@@ -124,7 +128,8 @@ class Bounced : Component() {
                                     <path d="M15 15 Q50 50 85 15" fill="none" stroke="black" stroke-width="2"/>
                                     <path d="M15 85 Q50 50 85 85" fill="none" stroke="black" stroke-width="2"/>
                                 </svg>
-                            """)
+                            """
+                            )
                         }
                     }
 
@@ -132,7 +137,7 @@ class Bounced : Component() {
                         className("mt-8 pt-6 border-t border-slate-100 flex justify-between")
                         button {
                             className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
-                            text("Back to Dashboard")
+                            text("Back to Home")
                             on(DomEvent.Click) {
                                 dom.Router.navigate("/")
                             }
@@ -143,6 +148,7 @@ class Bounced : Component() {
                         }
                     }
                 }
+                preview()
             }
         }
     }

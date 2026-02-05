@@ -2,22 +2,24 @@ package example
 
 import dom.BuildContext
 import dom.Component
-import dom.Directive
 import dom.View
+import dom.directive.Directive
 import dom.types.DomEvent
+import example.component.CodePreview
+import example.component.TooltipDirective
+import example.store.SourceCodes
 import org.w3c.dom.Element
 import org.w3c.dom.HTMLElement
 
-class TooltipDirective(private val text: String) : Directive {
-    override fun update(element: Element) {
-        element.setAttribute("title", text)
-        (element as? HTMLElement)?.style?.cursor = "help"
-    }
-}
-
-class UseDirective : Component() {
+open class UseDirective : Component() {
     val count = state(0)
     val focused = state(false)
+
+    private val preview = CodePreview(SourceCodes.useDirective)
+    override fun onMounted() {
+        super.onMounted()
+        console.log("mounted Directive")
+    }
 
     override fun render(context: BuildContext): View {
         return content {
@@ -48,13 +50,13 @@ class UseDirective : Component() {
                             input {
                                 className("w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none")
                                 placeholder("I will be focused on mount...")
-                                use { el ->
-                                    if (!focused.value) {
-                                        (el as HTMLElement).focus()
-                                        focused.value = true
-                                        console.log("Input focused via directive")
-                                    }
-                                }
+//                                use { el ->
+//                                    if (!focused.value) {
+//                                        (el as HTMLElement).focus()
+//                                        focused.value = true
+//                                        console.log("Input focused via directive")
+//                                    }
+//                                }
                             }
                         }
 
@@ -78,13 +80,17 @@ class UseDirective : Component() {
                             div {
                                 className("h-32 w-full rounded-lg flex items-center justify-center text-white font-bold text-2xl transition-all duration-500")
                                 text("Count: ${count.value}")
-                                
-                                use { el ->
-                                    val element = el as HTMLElement
-                                    val hue = (count.value * 20) % 360
-                                    element.style.backgroundColor = "hsl($hue, 70%, 50%)"
-                                    element.style.transform = "scale(${1.0 + (count.value % 5) * 0.05})"
-                                }
+                                use(object : Directive {
+
+                                    override fun update(element: Element) {
+                                        super.update(element)
+                                        val element = element as HTMLElement
+                                        val hue = (count.value * 20) % 360
+                                        element.style.backgroundColor = "hsl($hue, 70%, 50%)"
+                                        element.style.transform = "scale(${1.0 + (count.value % 5) * 0.05})"
+                                    }
+                                })
+
                             }
                             
                             div {
@@ -111,13 +117,14 @@ class UseDirective : Component() {
                         className("mt-8 pt-6 border-t border-gray-100")
                         button {
                             className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
-                            text("Back to Dashboard")
+                            text("Back to Home")
                             on(DomEvent.Click) {
                                 dom.Router.navigate("/")
                             }
                         }
                     }
                 }
+                preview()
             }
         }
     }

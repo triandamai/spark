@@ -5,10 +5,14 @@ import dom.Component
 import dom.View
 import dom.types.DomEvent
 import dom.types.InputType
+import example.component.CodePreview
+import example.store.SourceCodes
 
-class Explore : Component() {
+class MoveIt : Component() {
     val translateX = state(0)
     val translateY = state(0)
+
+    private val preview = CodePreview(SourceCodes.moveIt)
 
     override fun render(context: BuildContext): View {
         return content {
@@ -69,13 +73,14 @@ class Explore : Component() {
                         className("mt-8 pt-6 border-t border-gray-100")
                         button {
                             className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
-                            text("Back to Dashboard")
+                            text("Back to Home")
                             on(DomEvent.Click) {
                                 dom.Router.navigate("/")
                             }
                         }
                     }
                 }
+                preview()
             }
         }
     }

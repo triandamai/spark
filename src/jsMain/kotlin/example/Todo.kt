@@ -6,20 +6,17 @@ import dom.Route
 import dom.Router.Companion.navigate
 import dom.View
 import dom.types.DomEvent
+import example.component.CodePreview
 import example.component.Input
 import example.component.ItemTodoView
-import example.store.AuthAction
 import example.store.ItemTodo
-import example.store.TodoAction
-import example.store.auth
+import example.store.SourceCodes
 import example.store.todo
 import kotlinx.browser.localStorage
 import reactivity.removeAt
 import reactivity.set
 
-
-class App : Component() {
-    val store = useStore(auth)
+class Todo : Component() {
     val todoStore = useStore(todo)
     val items = state(listOf<ItemTodo>())
     
@@ -27,13 +24,12 @@ class App : Component() {
         items.value = items.value + ItemTodo(it)
     })
 
+    private val preview = CodePreview(SourceCodes.todo)
+
     override fun beforeNavigate(from: Route, to: Route, next: () -> Boolean): Boolean {
-        if (!to.path.startsWith("/login")) {
-            val isLoggedIn = localStorage.getItem("isLoggedIn").toBoolean()
-            if (!isLoggedIn) {
-                return navigate("/login")
-            }
-            return next()
+        val isLoggedIn = localStorage.getItem("isLoggedIn").toBoolean()
+        if (!isLoggedIn) {
+            return navigate("/login")
         }
         return next()
     }
@@ -59,53 +55,11 @@ class App : Component() {
                         }
 
                         div {
-                            className("flex space-x-4 text-sm font-medium text-gray-500")
-                            a {
-                                className("hover:text-indigo-600 cursor-pointer transition-colors")
-                                text("Explore")
-                                on(DomEvent.Click) { e ->
-                                    e.preventDefault()
-                                    navigate("/explore")
-                                }
-                            }
-                            a {
-                                className("hover:text-indigo-600 cursor-pointer transition-colors")
-                                text("Explore 2")
-                                on(DomEvent.Click) { e ->
-                                    e.preventDefault()
-                                    navigate("/explore2")
-                                }
-                            }
-                            a {
-                                className("hover:text-indigo-600 cursor-pointer transition-colors")
-                                text("Bounced")
-                                on(DomEvent.Click) { e ->
-                                    e.preventDefault()
-                                    navigate("/bounced")
-                                }
-                            }
-                            a {
-                                className("hover:text-indigo-600 cursor-pointer transition-colors")
-                                text("Directives")
-                                on(DomEvent.Click) { e ->
-                                    e.preventDefault()
-                                    navigate("/use-directive")
-                                }
-                            }
-                            a {
-                                className("hover:text-indigo-600 cursor-pointer transition-colors")
-                                text("Profile")
-                                on(DomEvent.Click) { e ->
-                                    e.preventDefault()
-                                    navigate("/profile/1?name=Juan")
-                                }
-                            }
-                            a {
-                                className("hover:text-indigo-600 cursor-pointer transition-colors")
-                                text("Login")
-                                on(DomEvent.Click) { e ->
-                                    e.preventDefault()
-                                    store.dispatch(AuthAction.Logout)
+                            button {
+                                className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
+                                text("Back to Home")
+                                on(DomEvent.Click) {
+                                    navigate("/")
                                 }
                             }
                         }
@@ -151,6 +105,10 @@ class App : Component() {
                             }
                         }
                     }
+                }
+                div {
+                    className("mt-8")
+                    preview()
                 }
             }
         }

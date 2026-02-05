@@ -1,6 +1,9 @@
 package dom.builders
 
 import dom.*
+import dom.directive.Directive
+import dom.transition.BaseTransition
+import dom.transition.Transition
 import dom.types.DomEvent
 import reactivity.State
 
@@ -17,7 +20,7 @@ abstract class BaseElementBuilder<T : BaseElementBuilder<T>>(
 
     fun classname(name: String): T = className(name) // Handle typo compatibility
 
-    fun height(value: String) {
+    open fun height(value: String) {
         element.attributes["height"] = value
     }
 
@@ -92,14 +95,55 @@ abstract class BaseElementBuilder<T : BaseElementBuilder<T>>(
      * }
      * ```
      */
-    fun use(directive: Any): T {
+    fun use(directive: Directive): T {
         element.directives.add(directive)
         @Suppress("UNCHECKED_CAST")
         return this as T
     }
 
-    fun use(block: (org.w3c.dom.Element) -> Unit): T {
-        element.directives.add(block)
+    fun use(directive: (org.w3c.dom.Element) -> Unit): T {
+        element.directives.add(directive)
+        @Suppress("UNCHECKED_CAST")
+        return this as T
+    }
+
+    /**
+     * Set a transition for this element (both in and out).
+     */
+    fun transition(transition: Transition): T {
+        if (transition is BaseTransition) {
+            element.transitionIn = transition.asIn()
+            element.transitionOut = transition.asOut()
+        } else {
+            element.transitionIn = transition
+            element.transitionOut = transition
+        }
+        @Suppress("UNCHECKED_CAST")
+        return this as T
+    }
+
+    /**
+     * Set an in-transition for this element.
+     */
+    fun inTransition(transition: Transition): T {
+        if (transition is BaseTransition) {
+            element.transitionIn = transition.asIn()
+        } else {
+            element.transitionIn = transition
+        }
+        @Suppress("UNCHECKED_CAST")
+        return this as T
+    }
+
+    /**
+     * Set an out-transition for this element.
+     */
+    fun outTransition(transition: Transition): T {
+        if (transition is BaseTransition) {
+            element.transitionOut = transition.asOut()
+        } else {
+            element.transitionOut = transition
+        }
         @Suppress("UNCHECKED_CAST")
         return this as T
     }
@@ -454,9 +498,30 @@ abstract class BaseElementBuilder<T : BaseElementBuilder<T>>(
         element.children.add(el)
     }
 
+    fun pre(block: DivBuilder.() -> Unit) {
+        val el = VElement("pre")
+        val b = DivBuilder(el, parentBuilder)
+        b.block()
+        element.children.add(el)
+    }
+
+    fun code(block: DivBuilder.() -> Unit) {
+        val el = VElement("code")
+        val b = DivBuilder(el, parentBuilder)
+        b.block()
+        element.children.add(el)
+    }
+
     fun img(block: ImgBuilder.() -> Unit) {
         val el = VElement("img")
         val builder = ImgBuilder(el, null)
+        builder.block()
+        element.children.add(el)
+    }
+
+    fun canvas(block: CanvasBuilder.() -> Unit) {
+        val el = VElement("canvas")
+        val builder = CanvasBuilder(el, parentBuilder)
         builder.block()
         element.children.add(el)
     }

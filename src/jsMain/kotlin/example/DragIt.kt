@@ -4,12 +4,16 @@ import dom.BuildContext
 import dom.Component
 import dom.View
 import dom.types.DomEvent
+import example.component.CodePreview
+import example.store.SourceCodes
 import org.w3c.dom.events.MouseEvent
 
-class Explore2 : Component() {
+class DragIt : Component() {
     val x = state(0)
     val y = state(0)
     val isDragging = state(false)
+
+    private val preview = CodePreview(SourceCodes.dragIt)
     
     private var startX = 0
     private var startY = 0
@@ -82,7 +86,7 @@ class Explore2 : Component() {
                         className("mt-8 pt-6 border-t border-gray-100 flex justify-between")
                         button {
                             className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
-                            text("Back to Dashboard")
+                            text("Back to Home")
                             on(DomEvent.Click) {
                                 dom.Router.navigate("/")
                             }
@@ -97,6 +101,7 @@ class Explore2 : Component() {
                         }
                     }
                 }
+                preview()
             }
         }
     }

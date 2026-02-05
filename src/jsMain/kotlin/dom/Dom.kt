@@ -1,6 +1,9 @@
 package dom
 
 import dom.builders.BaseElementBuilder.EachScope
+import dom.directive.Directive
+import dom.directive.DirectiveAction
+import dom.transition.Transition
 import kotlinx.browser.document
 
 interface VNode {
@@ -8,14 +11,6 @@ interface VNode {
     fun patch(old: VNode, node: org.w3c.dom.Node): org.w3c.dom.Node
 }
 
-interface Directive {
-    fun update(element: org.w3c.dom.Element) {}
-    fun destroy(element: org.w3c.dom.Element) {}
-}
-
-fun interface DirectiveAction {
-    fun update(element: org.w3c.dom.Element)
-}
 
 class VText(val text: String) : VNode {
     override fun render(): org.w3c.dom.Node = document.createTextNode(text)
@@ -57,6 +52,8 @@ class VElement(val tagName: String) : VNode {
     val listeners = mutableMapOf<String, (org.w3c.dom.events.Event) -> Unit>()
     val directives = mutableListOf<Any>()
     val children = mutableListOf<VNode>()
+    var transitionIn: Transition? = null
+    var transitionOut: Transition? = null
 
     override fun render(): org.w3c.dom.Node {
         val element = document.createElement(tagName) as org.w3c.dom.Element
@@ -82,6 +79,7 @@ class VElement(val tagName: String) : VNode {
                 is Function1<*, *> -> (directive as (org.w3c.dom.Element) -> Unit)(element)
             }
         }
+        transitionIn?.start(element) {}
         return element
     }
 
@@ -159,7 +157,17 @@ class VElement(val tagName: String) : VNode {
             if (i >= old.children.size) {
                 element.appendChild(children[i].render())
             } else if (i >= children.size) {
-                element.removeChild(currentNodes[i])
+                val oldVNode = old.children[i]
+                val oldDomNode = currentNodes[i]
+                if (oldVNode is VElement && oldVNode.transitionOut != null) {
+                    oldVNode.transitionOut?.start(oldDomNode as org.w3c.dom.Element) {
+                        if (oldDomNode.parentNode == element) {
+                            element.removeChild(oldDomNode)
+                        }
+                    }
+                } else {
+                    element.removeChild(oldDomNode)
+                }
             } else {
                 children[i].patch(old.children[i], currentNodes[i])
             }
@@ -719,9 +727,9 @@ class ElementBuilder(val parent: VElement?) {
      * }
      * ```
      */
-    fun <K, V> Map<K, V>.each(block: dom.builders.BaseElementBuilder.EachScope<Map<K, V>, ElementBuilder>.(Map.Entry<K, V>) -> Unit) {
+    fun <K, V> Map<K, V>.each(block: EachScope<Map<K, V>, ElementBuilder>.(Map.Entry<K, V>) -> Unit) {
         this.forEach { item ->
-            val scope = dom.builders.BaseElementBuilder.EachScope<Map<K, V>, ElementBuilder>(item.key, this@ElementBuilder)
+            val scope = EachScope<Map<K, V>, ElementBuilder>(item.key, this@ElementBuilder)
             scope.block(item)
         }
     }

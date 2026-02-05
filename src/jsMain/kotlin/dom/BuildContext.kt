@@ -94,7 +94,17 @@ class BuildContext {
             if (i >= lastVNodes.size) {
                 container.appendChild(newVNodes[i].render())
             } else if (i >= newVNodes.size) {
-                container.removeChild(currentNodes[i])
+                val oldVNode = lastVNodes[i]
+                val oldDomNode = currentNodes[i]
+                if (oldVNode is VElement && oldVNode.transitionOut != null) {
+                    oldVNode.transitionOut?.start(oldDomNode as org.w3c.dom.Element) {
+                        if (oldDomNode.parentNode == container) {
+                            container.removeChild(oldDomNode)
+                        }
+                    }
+                } else {
+                    container.removeChild(oldDomNode)
+                }
             } else {
                 newVNodes[i].patch(lastVNodes[i], currentNodes[i])
             }

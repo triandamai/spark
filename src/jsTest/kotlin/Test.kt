@@ -134,7 +134,7 @@ class BrowserTest {
         
         val helloDiv = root.querySelector(".hello")
         assertNotNull(helloDiv, "HelloWorld component should render a div with class 'hello'")
-        // HelloWorld in example/App.kt renders "Hello World! ${helloCount.value}" where helloCount starts at 0
+        // HelloWorld in example/Home.kt renders "Hello World! ${helloCount.value}" where helloCount starts at 0
         // Wait, I saw "Hello World 0" in the log, checking HelloWorld implementation
         assertEquals("Hello World 0", helloDiv.textContent)
     }
@@ -514,7 +514,7 @@ class BrowserTest {
 
         // After click, done.value becomes true. 
         // This triggers BuildContext.root?.requestUpdate().
-        // App.render() is called.
+        // Home.render() is called.
         // ItemTodo("Task 1").invoke() is called AGAIN with a NEW ItemTodo instance.
         // This new instance calls state(false), which initializes a new state with false.
         // So it still shows "Task 1 Undone".

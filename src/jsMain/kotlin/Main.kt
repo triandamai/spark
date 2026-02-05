@@ -1,25 +1,25 @@
 import dom.Application
 import dom.Router
-import dom.Router.Companion.navigate
-import example.App
 import example.Home
+import example.Todo
 import example.Profile
 import example.Login
-import example.Explore
-import example.Explore2
+import example.MoveIt
+import example.DragIt
 import example.Bounced
+import example.CanvasDemo
 import example.UseDirective
+import example.Transition
 import kotlinx.browser.document
-import kotlinx.browser.localStorage
 
 
 fun main() {
     val router = Router {
         route("/") { entry ->
-            App()
-        }
-        route("/home") { entry ->
             Home()
+        }
+        route("/todo") { entry ->
+            Todo()
         }
         route("/profile/:id") { entry ->
             Profile()
@@ -27,11 +27,11 @@ fun main() {
         route("/login") { entry ->
             Login()
         }
-        route("/explore") { entry ->
-            Explore()
+        route("/move") { entry ->
+            MoveIt()
         }
-        route("/explore2") { entry ->
-            Explore2()
+        route("/drag") { entry ->
+            DragIt()
         }
         route("/bounced") { entry ->
             Bounced()
@@ -39,11 +39,17 @@ fun main() {
         route("/use-directive") { entry ->
             UseDirective()
         }
+        route("/transitions") { entry ->
+            Transition()
+        }
+        route("/canvas"){
+            CanvasDemo()
+        }
     }.beforeNavigate { from, to, next ->
        next()
     }
 
 
-//    Application.mount(root, App())
+//    Application.mount(root, Home())
     Application.mount(document.getElementById("app"), router)
 }
