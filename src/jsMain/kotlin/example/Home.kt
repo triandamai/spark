@@ -54,11 +54,12 @@ class Home : Component() {
                         className("text-center mb-12")
                         h1 {
                             className("text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl")
-                            text("Kotlin Web Framework")
+                            text("Spark")
                         }
+                    
                         p {
                             className("mt-4 text-xl text-slate-600 max-w-2xl mx-auto")
-                            text("Explore the features of this reactive framework through the examples below.")
+                            text("Small, lightweight, but starts something big.")
                         }
                     }
 
