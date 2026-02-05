@@ -11,6 +11,7 @@ version = "1.0-SNAPSHOT"
 
 kotlin {
     js(IR) {
+        generateTypeScriptDefinitions()
         browser {
             runTask {
                 
@@ -22,7 +23,6 @@ kotlin {
         compilerOptions {
             optIn.add("kotlin.js.ExperimentalJsExport")
         }
-        generateTypeScriptDefinitions()
     }
 
     sourceSets {

@@ -13,7 +13,8 @@ import example.Transition
 import kotlinx.browser.document
 
 
-fun main() {
+@JsExport
+fun startApp() {
     val router = Router {
         route("/") { entry ->
             Home()
@@ -52,4 +53,9 @@ fun main() {
 
 //    Application.mount(root, Home())
     Application.mount(document.getElementById("app"), router)
+}
+
+fun main() {
+    startApp()
+    console.log("Main loaded")
 }
