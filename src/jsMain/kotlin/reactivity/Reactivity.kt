@@ -1,8 +1,6 @@
 package reactivity
 
-import dom.BuildContext
 import kotlin.reflect.KClass
-import kotlin.reflect.KProperty
 
 class State<T>(initialValue: T) {
     private var _value: T = initialValue

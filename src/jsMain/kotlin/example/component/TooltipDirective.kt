@@ -1,6 +1,6 @@
 package example.component
 
-import dom.directive.Directive
+import internal.directive.Directive
 import org.w3c.dom.Element
 import org.w3c.dom.HTMLElement
 

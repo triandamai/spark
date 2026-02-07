@@ -1,11 +1,11 @@
 package example
 
-import dom.BuildContext
-import dom.Component
-import dom.Route
-import dom.Router.Companion.navigate
-import dom.View
-import dom.types.DomEvent
+import internal.BuildContext
+import internal.Component
+import internal.Route
+import internal.Router.Companion.navigate
+import internal.View
+import internal.types.DomEvent
 import example.component.CardFeature
 import example.store.AuthAction
 import example.store.PageInfo
@@ -32,23 +32,21 @@ class Home : Component() {
     )
 
     override fun beforeNavigate(from: Route, to: Route, next: () -> Boolean): Boolean {
-        if (!to.path.startsWith("/login")) {
-            val isLoggedIn = localStorage.getItem("isLoggedIn").toBoolean()
-            if (!isLoggedIn) {
-                return navigate("/login")
-            }
-            return next()
-        }
+//        if (!to.path.startsWith("/login")) {
+//            val isLoggedIn = localStorage.getItem("isLoggedIn").toBoolean()
+//            if (!isLoggedIn) {
+//                return navigate("/login")
+//            }
+//            return next()
+//        }
         return next()
     }
 
-    override fun render(context: BuildContext): View {
-        return content {
-            div {
-                className("min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 font-sans")
+    override fun render(context: BuildContext): View = content {
+        div {
+            className("min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 font-sans")
 
-                div {
-                    className("max-w-5xl mx-auto")
+            div {
                     
                     div {
                         className("text-center mb-12")
@@ -99,4 +97,3 @@ class Home : Component() {
             }
         }
     }
-}

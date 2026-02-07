@@ -1,5 +1,5 @@
-import dom.Application
-import dom.Router
+import internal.Application
+import internal.Router
 import example.Home
 import example.Todo
 import example.Profile

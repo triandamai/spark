@@ -1,4 +1,4 @@
-import dom.*
+import internal.*
 import example.component.Input
 import kotlinx.browser.document
 import kotlinx.browser.window

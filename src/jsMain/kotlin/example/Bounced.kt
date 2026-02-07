@@ -1,9 +1,9 @@
 package example
 
-import dom.BuildContext
-import dom.Component
-import dom.View
-import dom.types.DomEvent
+import internal.BuildContext
+import internal.Component
+import internal.View
+import internal.types.DomEvent
 import example.component.CodePreview
 import example.store.SourceCodes
 import kotlinx.browser.window
@@ -71,56 +71,54 @@ class Bounced : Component() {
         animationHandle = window.requestAnimationFrame { step(it) }
     }
 
-    override fun render(context: BuildContext): View {
-        return content {
+    override fun render(context: BuildContext): View = content {
+        div {
+            className("min-h-screen bg-slate-50 p-8 font-sans")
+
             div {
-                className("min-h-screen bg-slate-50 p-8 font-sans")
 
                 div {
-                    className("max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8")
-
+                    className("flex justify-between items-center mb-6")
                     div {
-                        className("flex justify-between items-center mb-6")
-                        div {
-                            h1 {
-                                className("text-3xl font-extrabold text-slate-900")
-                                text("Bouncing Basketball")
-                            }
-                            p {
-                                className("text-slate-500")
-                                text("Physics simulation using requestAnimationFrame and State.")
-                            }
+                        h1 {
+                            className("text-3xl font-extrabold text-slate-900")
+                            text("Bouncing Basketball")
                         }
-                        button {
-                            className("bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors")
-                            text("Reset Ball")
-                            on(DomEvent.Click) {
-                                x.value = 268.0
-                                y.value = 100.0
-                                vx.value = 3.0
-                                vy.value = 0.0
-                            }
+                        p {
+                            className("text-slate-500")
+                            text("Physics simulation using requestAnimationFrame and State.")
                         }
                     }
+                    button {
+                        className("bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors")
+                        text("Reset Ball")
+                        on(DomEvent.Click) {
+                            x.value = 268.0
+                            y.value = 100.0
+                            vx.value = 3.0
+                            vy.value = 0.0
+                        }
+                    }
+                }
 
+                div {
+                    className("relative bg-slate-100 rounded-xl border-2 border-slate-200 overflow-hidden")
+                    style("height", "${containerHeight}px")
+                    style("width", "${containerWidth}px")
+                    className("mx-auto")
+
+                    // The "Ball"
                     div {
-                        className("relative bg-slate-100 rounded-xl border-2 border-slate-200 overflow-hidden")
-                        style("height", "${containerHeight}px")
-                        style("width", "${containerWidth}px")
-                        className("mx-auto")
+                        className("absolute bg-orange-500 rounded-full shadow-lg flex items-center justify-center border-4 border-orange-600")
+                        style("width", "${boxSize}px")
+                        style("height", "${boxSize}px")
+                        style("left", "30%")
+                        style("top", "0px")
+                        style("transform", "translate(${x.value}px, ${y.value}px)")
 
-                        // The "Ball"
-                        div {
-                            className("absolute bg-orange-500 rounded-full shadow-lg flex items-center justify-center border-4 border-orange-600")
-                            style("width", "${boxSize}px")
-                            style("height", "${boxSize}px")
-                            style("left", "30%")
-                            style("top", "0px")
-                            style("transform", "translate(${x.value}px, ${y.value}px)")
-
-                            // Basketball lines (simple SVG)
-                            rawHtml(
-                                """
+                        // Basketball lines (simple SVG)
+                        rawHtml(
+                            """
                                 <svg viewBox="0 0 100 100" class="w-full h-full p-1 opacity-40">
                                     <circle cx="50" cy="50" r="48" fill="none" stroke="black" stroke-width="2"/>
                                     <path d="M50 2 L50 98" fill="none" stroke="black" stroke-width="2"/>
@@ -129,27 +127,26 @@ class Bounced : Component() {
                                     <path d="M15 85 Q50 50 85 85" fill="none" stroke="black" stroke-width="2"/>
                                 </svg>
                             """
-                            )
-                        }
-                    }
-
-                    div {
-                        className("mt-8 pt-6 border-t border-slate-100 flex justify-between")
-                        button {
-                            className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
-                            text("Back to Home")
-                            on(DomEvent.Click) {
-                                dom.Router.navigate("/")
-                            }
-                        }
-                        div {
-                            className("text-slate-400 text-sm")
-                            text("X: ${x.value.toInt()} | Y: ${y.value.toInt()}")
-                        }
+                        )
                     }
                 }
-                preview()
+
+                div {
+                    className("mt-8 pt-6 border-t border-slate-100 flex justify-between")
+                    button {
+                        className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
+                        text("Back to Home")
+                        on(DomEvent.Click) {
+                            internal.Router.navigate("/")
+                        }
+                    }
+                    div {
+                        className("text-slate-400 text-sm")
+                        text("X: ${x.value.toInt()} | Y: ${y.value.toInt()}")
+                    }
+                }
             }
+            preview()
         }
     }
 }

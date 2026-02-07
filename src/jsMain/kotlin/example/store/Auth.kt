@@ -1,6 +1,6 @@
 package example.store
 
-import dom.useRouter
+import internal.useRouter
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
 import org.w3c.dom.set

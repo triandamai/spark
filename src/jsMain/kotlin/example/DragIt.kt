@@ -1,9 +1,9 @@
 package example
 
-import dom.BuildContext
-import dom.Component
-import dom.View
-import dom.types.DomEvent
+import internal.BuildContext
+import internal.Component
+import internal.View
+import internal.types.DomEvent
 import example.component.CodePreview
 import example.store.SourceCodes
 import org.w3c.dom.events.MouseEvent
@@ -20,13 +20,13 @@ class DragIt : Component() {
     private var initialX = 0
     private var initialY = 0
 
-    override fun render(context: BuildContext): View {
-        return content {
+    override fun render(context: BuildContext): View = content {
+        div {
+            className("min-h-screen bg-slate-100 p-8 font-sans")
+            
             div {
-                className("min-h-screen bg-slate-100 p-8 font-sans")
+                className("max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8")
                 
-                div {
-                    className("max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8")
                     
                     h1 {
                         className("text-3xl font-bold text-gray-800 mb-2")
@@ -88,7 +88,7 @@ class DragIt : Component() {
                             className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
                             text("Back to Home")
                             on(DomEvent.Click) {
-                                dom.Router.navigate("/")
+                                internal.Router.navigate("/")
                             }
                         }
                         button {
@@ -105,4 +105,3 @@ class DragIt : Component() {
             }
         }
     }
-}

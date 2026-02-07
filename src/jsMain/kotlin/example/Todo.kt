@@ -1,11 +1,11 @@
 package example
 
-import dom.BuildContext
-import dom.Component
-import dom.Route
-import dom.Router.Companion.navigate
-import dom.View
-import dom.types.DomEvent
+import internal.BuildContext
+import internal.Component
+import internal.Route
+import internal.Router.Companion.navigate
+import internal.View
+import internal.types.DomEvent
 import example.component.CodePreview
 import example.component.Input
 import example.component.ItemTodoView
@@ -34,82 +34,80 @@ class Todo : Component() {
         return next()
     }
 
-    override fun render(context: BuildContext): View {
-        return content {
+    override fun render(context: BuildContext): View = content {
+        div {
+            className("min-h-screen bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center py-10 px-4 font-sans")
+
             div {
-                className("min-h-screen bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center py-10 px-4 font-sans")
-
+                className("max-w-xl w-full bg-white rounded-xl shadow-2xl overflow-hidden")
                 div {
-                    className("max-w-xl w-full bg-white rounded-xl shadow-2xl overflow-hidden")
+                    className("bg-white border-b border-gray-100 px-6 py-5 flex items-center justify-between")
                     div {
-                        className("bg-white border-b border-gray-100 px-6 py-5 flex items-center justify-between")
-                        div {
-                            h1 {
-                                className("text-2xl font-bold text-gray-800 tracking-tight")
-                                text("My Tasks")
-                            }
-                            span {
-                                className("text-sm text-gray-500 ml-2")
-                                text("${todoStore.state.todos.size} requests")
-                            }
+                        h1 {
+                            className("text-2xl font-bold text-gray-800 tracking-tight")
+                            text("My Tasks")
                         }
-
-                        div {
-                            button {
-                                className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
-                                text("Back to Home")
-                                on(DomEvent.Click) {
-                                    navigate("/")
-                                }
-                            }
+                        span {
+                            className("text-sm text-gray-500 ml-2")
+                            text("${todoStore.state.todos.size} requests")
                         }
                     }
 
                     div {
-                        className("p-6 bg-gray-50/50 min-h-[400px]")
-                        form()
-                        div {
-                            className("mt-6")
-                            if (items.value.isEmpty()) {
-                                div {
-                                    className("text-center py-10 text-gray-400 border-2 border-dashed border-gray-200 rounded-lg")
-                                    text("No tasks yet. Add one above!")
-                                }
-                            }
-
-                            items.eachIndexed { index, item ->
-                                component {
-                                    ItemTodoView(
-                                        item.name,
-                                        isDone = item.done,
-                                        onDone = { done ->
-                                            val modify = item.copy(done = done)
-                                            items.set(index, modify)
-                                        },
-                                        onRemove = {
-                                            items.removeAt(index)
-                                        }
-                                    )
-                                }
-                            }
-                        }
-                    }
-
-                    div {
-                        className("bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between items-center")
                         button {
-                            className("text-xs text-gray-400 hover:text-gray-600 underline")
-                            text("Debug Tree")
+                            className("text-indigo-600 hover:text-indigo-800 font-medium transition-colors")
+                            text("Back to Home")
                             on(DomEvent.Click) {
-                                console.log(BuildContext.root)
+                                navigate("/")
                             }
                         }
                     }
                 }
+
                 div {
-                    className("mt-8")
-                    preview()
+                    className("p-6 bg-gray-50/50 min-h-[400px]")
+                    form()
+                    div {
+                        className("mt-6")
+                        if (items.value.isEmpty()) {
+                            div {
+                                className("text-center py-10 text-gray-400 border-2 border-dashed border-gray-200 rounded-lg")
+                                text("No tasks yet. Add one above!")
+                            }
+                        }
+
+                        items.eachIndexed { index, item ->
+                            component {
+                                ItemTodoView(
+                                    item.name,
+                                    isDone = item.done,
+                                    onDone = { done ->
+                                        val modify = item.copy(done = done)
+                                        items.set(index, modify)
+                                    },
+                                    onRemove = {
+                                        items.removeAt(index)
+                                    }
+                                )
+                            }
+                        }
+                    }
                 }
+
+                div {
+                    className("bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between items-center")
+                    button {
+                        className("text-xs text-gray-400 hover:text-gray-600 underline")
+                        text("Debug Tree")
+                        on(DomEvent.Click) {
+                            console.log(BuildContext.root)
+                        }
+                    }
+                }
+            }
+            div {
+                className("mt-8")
+                preview()
             }
         }
     }
