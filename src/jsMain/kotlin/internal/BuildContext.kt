@@ -65,12 +65,14 @@ class BuildContext {
 
 
         val removed = activeComponents.filter { it !in renderedComponents }
-        removed.forEach { 
+        removed.forEach {
+            it?.setParent(component)
             it?.onUnmounted()
         }
 
         val added = renderedComponents.filter { it !in activeComponents }
-        added.forEach { 
+        added.forEach {
+            it?.setParent(component)
             it?.onMounted() 
         }
 

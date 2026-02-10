@@ -8,8 +8,8 @@ import example.component.CodePreview
 import example.store.SourceCodes
 
 class Transition : Component() {
-    val show = state(true)
-    val items = state(mutableListOf("Item 1", "Item 2", "Item 3"))
+    val show by useState(true)
+    val items by useState(mutableListOf("Item 1", "Item 2", "Item 3"))
 
     private val preview = CodePreview(SourceCodes.transition)
 

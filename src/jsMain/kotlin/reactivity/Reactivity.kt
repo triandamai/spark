@@ -1,8 +1,10 @@
 package reactivity
 
 import kotlin.reflect.KClass
+import kotlin.reflect.KProperty
 
 class State<T>(initialValue: T) {
+    private var name: String = ""
     private var _value: T = initialValue
     private val observers = mutableListOf<() -> Unit>()
 
@@ -16,6 +18,14 @@ class State<T>(initialValue: T) {
                 notifyObservers()
             }
         }
+
+    companion object {
+        fun <T> initProp(name: String, value: T): State<T> {
+            val state = State(value)
+            state.name = name
+            return state
+        }
+    }
 
     fun subscribe(observer: () -> Unit) {
         observers.add(observer)
@@ -31,12 +41,58 @@ class State<T>(initialValue: T) {
         _value = newValue
     }
 
+    fun getStateName(): String {
+        return name
+    }
+
     operator fun invoke(): T = value
-    operator fun invoke(value:T) {
+    operator fun invoke(value: T) {
         this.value = value
     }
 }
 
+
+class StateDelegate<T>(private val initial: T, private val onInit:(State<T>)-> Unit, private val observer: (State<T>) -> Unit) {
+    private lateinit var state: State<T>
+
+    var value: T
+        get() = state.value
+        set(value) {
+            state.value = value
+        }
+
+
+    operator fun invoke(): T = this.state.value
+    operator fun invoke(value: T) {
+        this.state.value = value
+    }
+    operator fun provideDelegate(
+        thisRef: Any?,
+        prop: KProperty<*>
+    ): StateDelegate<T> {
+        state = State.initProp(prop.name, initial)
+        state.subscribe({
+            observer(state)
+        })
+        onInit(state)
+        return this
+    }
+
+    operator fun getValue(
+        thisRef: Any?,
+        prop: KProperty<*>
+    ): State<T> = state
+
+    operator fun setValue(
+        thisRef: Any?,
+        prop: KProperty<*>,
+        value: State<T>
+    ) {
+        state = value
+    }
+
+    fun getStateName() = state.getStateName()
+}
 
 // Minimal reactivity helpers as seen in Main.kt imports
 fun <T> State<List<T>>.add(item: T) {
@@ -44,12 +100,12 @@ fun <T> State<List<T>>.add(item: T) {
 }
 
 fun <T> State<List<T>>.size(): Int {
-   return this.value.size
+    return this.value.size
 }
 
-fun <T> State<List<T>>.set(idx: Int,item: T) {
+fun <T> State<List<T>>.set(idx: Int, item: T) {
     val value = this.value.toMutableList()
-    value.set(idx,item)
+    value.set(idx, item)
     this.value = value
 }
 
@@ -90,7 +146,7 @@ fun <T> State<MutableList<T>>.add(item: T) {
 
 // MutableList extensions
 fun <T> State<MutableList<T>>.set(idx: Int, item: T) {
-    this.value.set(idx,item)
+    this.value.set(idx, item)
     notifyObservers()
 }
 
@@ -165,7 +221,7 @@ class Store<S, A : Any>(
 }
 
 class StoreBuilder<S, A : Any>(private val store: Store<S, A>) {
-    fun <T : A> on(clazz: KClass<T>, handler: Store<S,A>.(T) -> Unit) {
+    fun <T : A> on(clazz: KClass<T>, handler: Store<S, A>.(T) -> Unit) {
         store.registerHandler(clazz) { action -> handler(store, action as T) }
     }
 }

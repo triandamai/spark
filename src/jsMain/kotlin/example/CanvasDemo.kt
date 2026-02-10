@@ -14,7 +14,7 @@ import kotlin.math.sin
 
 class CanvasDemo : Component() {
     private val preview = CodePreview(SourceCodes.canvas)
-    private val rotation = state(0.0)
+    private val rotation by useState(0.0)
     private var animationHandle: Int? = null
 
     override fun onMounted() {

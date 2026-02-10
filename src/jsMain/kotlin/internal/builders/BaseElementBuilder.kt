@@ -356,10 +356,16 @@ abstract class BaseElementBuilder<T : BaseElementBuilder<T>>(
             val comp = parent?.child(keyed) { factory() } ?: factory()
             if (builder is BaseElementBuilder<*>) {
                 builder.apply {
+                    if(parent != null) {
+                        comp.setParent(parent)
+                    }
                     comp.invoke()
                 }
             } else if (builder is ElementBuilder) {
                 builder.apply {
+                    if(parent != null) {
+                        comp.setParent(parent)
+                    }
                     comp.invoke()
                 }
             }

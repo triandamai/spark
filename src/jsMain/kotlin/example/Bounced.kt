@@ -9,10 +9,10 @@ import example.store.SourceCodes
 import kotlinx.browser.window
 
 class Bounced : Component() {
-    private val x = state<Double>(window.innerWidth.toDouble())
-    private val y = state(100.0)
-    private val vx = state(3.0)
-    private val vy = state(0.0)
+    private val x by useState(window.innerWidth.toDouble())
+    private val y by useState(100.0)
+    private val vx by useState(3.0)
+    private val vy by useState(0.0)
 
     private val preview = CodePreview(SourceCodes.bounced)
     private val gravity = 0.5

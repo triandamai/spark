@@ -2,6 +2,7 @@ package internal
 
 import internal.devtools.DevTools
 import reactivity.State
+import reactivity.StateDelegate
 import reactivity.Store
 import kotlin.js.Date
 
@@ -16,14 +17,18 @@ data class NavEntry(
 }
 
 abstract class Component {
-    val id: String = "Component_${uniqueId}"
-    private var parent: String?=null
+    private var id: String = "${this::class.js.name}-${(uniqueId++)}"
+    private var parent: String? = null
     open val enableDevTools: Boolean = true
 
     companion object {
-        private var uniqueId = Date().getTime().toLong()
+        private var uniqueId = 0
+        fun reset() {
+            uniqueId = 0
+        }
     }
 
+    private var skipTracing = false
     private var isMounted = false
     private val states = mutableListOf<State<*>>()
     private var stateIndex = 0
@@ -33,9 +38,18 @@ abstract class Component {
     private var navEntry = NavEntry()
     internal var _context: BuildContext? = null
 
+    protected fun setSkipTracing(skip: Boolean) {
+        skipTracing = skip
+    }
+
     fun setParent(parent: Component) {
         this.parent = parent.id
     }
+
+    fun setComponentId(componentId: String) {
+        this.id = "${this::class::js.name}-${componentId}"
+    }
+
     fun getParent() = this.parent
 
     fun getComponentId() = this.id
@@ -52,8 +66,8 @@ abstract class Component {
     open fun onMounted() {
         if (!isMounted) {
             isMounted = true
-            if (enableDevTools) {
-                DevTools.registerComponent(id, this)
+            if (enableDevTools && !skipTracing) {
+                DevTools.registerComponent(this.id, this)
             }
         }
     }
@@ -66,7 +80,7 @@ abstract class Component {
             keyedChildComponents.values.forEach { it.onUnmounted() }
             childComponents.clear()
             keyedChildComponents.clear()
-            if (enableDevTools) {
+            if (enableDevTools && !skipTracing) {
                 DevTools.unregisterComponent(id)
             }
         }
@@ -111,6 +125,37 @@ abstract class Component {
 
         //mark lifecycle hook for update as the dependency is changed
         onUpdated()
+    }
+
+    fun <T : Component> child(factory: () -> T): T {
+        val newComp = factory()
+        val existing = keyedChildComponents[newComp.id]
+        if (existing != null) {
+            @Suppress("UNCHECKED_CAST")
+            val comp = existing as T
+            val newComp = factory()
+            comp.update(newComp)
+            comp.resetStateIndex()
+
+            return comp
+        }
+
+        keyedChildComponents[newComp.id] = newComp
+
+        if (childComponentIndex < childComponents.size) {
+            val oldComp = childComponents[childComponentIndex]
+            childComponentIndex++
+            @Suppress("UNCHECKED_CAST")
+            val comp = oldComp as T
+            val newComp = factory()
+            comp.update(newComp)
+            comp.resetStateIndex()
+            return comp
+        }
+
+        childComponents.add(newComp)
+        childComponentIndex++
+        return newComp as T
     }
 
     fun <T : Component> child(vararg keys: Any?, factory: () -> T): T {
@@ -162,6 +207,7 @@ abstract class Component {
         childComponentIndex = 0
     }
 
+
     fun <T> state(initialValue: T): State<T> {
         if (stateIndex < states.size) {
             @Suppress("UNCHECKED_CAST")
@@ -170,8 +216,9 @@ abstract class Component {
             return s
         }
 
-        val s = State(initialValue)
         val idx = stateIndex
+        val s = State(initialValue)
+
         s.subscribe {
             /**
              * Re-render from the root of this component's hierarchy
@@ -180,19 +227,42 @@ abstract class Component {
             if (isMounted) {
                 _context?.requestUpdate()
             }
-            if (enableDevTools) {
-                DevTools.logStateChange(id, idx,s.value)
+            if (enableDevTools && !skipTracing) {
+                DevTools.logStateChange(id, s.getStateName(), idx, s.value)
             }
         }
+
         states.add(s)
         stateIndex++
         return s
     }
 
+    fun <T> useState(initialValue: T): StateDelegate<T> {
+        var idx = stateIndex
+        return StateDelegate(initialValue, {
+            if (isMounted) {
+                if (stateIndex < states.size) {
+                    stateIndex++
+                } else {
+                    states.add(it)
+                    stateIndex++
+                }
+            }
+            idx = stateIndex
+        }) {
+            _context?.requestUpdate()
+            if (enableDevTools && !skipTracing) {
+                DevTools.logStateChange(id, it.getStateName(), idx, it.value)
+            }
+        }
+    }
+
 
     fun <S, A : Any> useStore(store: Store<S, A>): Store<S, A> {
         store.subscribe {
-            _context?.requestUpdate()
+            if (enableDevTools && !skipTracing) {
+                _context?.requestUpdate()
+            }
         }
         return store
     }

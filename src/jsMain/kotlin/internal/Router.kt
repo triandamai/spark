@@ -1,6 +1,7 @@
 package internal
 
 import internal.devtools.DevTools
+import internal.devtools.DevToolsUI
 import kotlinx.browser.window
 import kotlinx.dom.clear
 import org.w3c.dom.CustomEvent
@@ -83,10 +84,13 @@ class Router(
         val nextComponent = toRoute.component(entry)
         nextComponent.setNavEntry(entry)
         val next = {
+            if(DevTools.isEnabled){
+                DevTools.navigate()
+            }
+            Component.reset()
             window.history.pushState(null, "", path)
             currentPath = path
             mount(root!!, context = BuildContext.root!!)
-
             true
         }
         return navigationHook?.beforeNavigate(defaultFrom, toRoute) {

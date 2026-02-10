@@ -19,7 +19,7 @@ class MyAction(val text: String)
 class BrowserTest {
     @Test
     fun testState() {
-        val s = State(0)
+        val s = state(0)
         var observed = 0
         s.subscribe { observed = s.value }
         s.value = 1
@@ -158,7 +158,7 @@ class BrowserTest {
             }
         }
         
-        val show = State(true)
+        val show = state(true)
         
         class TestApp : Component() {
             override fun render(context: BuildContext): View = content {
@@ -207,7 +207,7 @@ class BrowserTest {
         }
 
         val stateComponent = StateComponent()
-        val show = State(true)
+        val show = state(true)
 
         class TestApp : Component() {
             override fun render(context: BuildContext): View = content {
@@ -313,7 +313,7 @@ class BrowserTest {
 
     @Test
     fun testStateListExtensions() {
-        val s = State(listOf("a", "b"))
+        val s = state(listOf("a", "b"))
         var count = 0
         s.subscribe { count++ }
 
@@ -340,7 +340,7 @@ class BrowserTest {
 
     @Test
     fun testStateMutableListExtensions() {
-        val s = State(mutableListOf("a", "b"))
+        val s = state(mutableListOf("a", "b"))
         var count = 0
         s.subscribe { count++ }
 
@@ -398,7 +398,7 @@ class BrowserTest {
     fun testInputAndBinding() {
         val root = document.createElement("div") as org.w3c.dom.Element
         val context = BuildContext()
-        val name = State("initial")
+        val name = state("initial")
 
         class InputComponent : Component() {
             override fun render(context: BuildContext): View = content {
@@ -444,7 +444,7 @@ class BrowserTest {
         val root = document.createElement("div") as org.w3c.dom.Element
         document.body?.appendChild(root)
         val context = BuildContext()
-        val name = State("initial")
+        val name = state("initial")
 
         class InputComponent : Component() {
             override fun render(context: BuildContext): View = content {
@@ -492,7 +492,7 @@ class BrowserTest {
         }
 
         class App : Component() {
-            val items = State(listOf("Task 1"))
+            val items = state(listOf("Task 1"))
             override fun render(context: BuildContext): View = content {
                 div {
                     items.value.forEach {
@@ -537,7 +537,7 @@ class BrowserTest {
             }
         }
 
-        val counter = State(0)
+        val counter = state(0)
         class App : Component() {
             override fun render(context: BuildContext): View = content {
                 child { PropComponent(counter.value) }.invoke()

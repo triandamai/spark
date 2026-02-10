@@ -22,16 +22,22 @@ object DevTools {
         dispatch("devtools-component-unmount", json("id" to id))
     }
 
-    fun logStateChange(componentId: String, idx: Int, stateValue: Any?) {
+    fun logStateChange(componentId: String,stateName:String, idx: Int, stateValue: Any?) {
         val compName = components[componentId]?.let { it::class.simpleName } ?: componentId
+        console.log(stateName)
         dispatch(
             "devtools-state-change", json(
                 "id" to componentId,
                 "idx" to idx,
-                "name" to compName,
+                "name" to stateName,
+                "component" to compName,
                 "value" to stateValue.toString()
             )
         )
+    }
+
+    fun navigate(){
+
     }
 
     private fun dispatch(eventName: String, detail: Any?) {
